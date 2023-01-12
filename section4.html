@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title>section4.md</title>
+</head>
+<body>
+<main>
+<aside>
+<a href="https://fushaolei.github.io/imguploadtest/">/index</a>
+<div class="menu-item">
+<div class="menu-title">Android</div>
+<ul>
+<li><a href="https://fushaolei.github.io/imguploadtest/common.html">common.md</a></li>
+<li><a href="https://fushaolei.github.io/imguploadtest/kotlin-flesh-learn.html">kotlin-flesh-learn.md</a></li>
+</ul>
+</div>
+<div class="menu-item">
+<div class="menu-title">Java</div>
+<ul>
+<li><a href="https://fushaolei.github.io/imguploadtest/section3.html">section3.md</a></li>
+<li><a href="https://fushaolei.github.io/imguploadtest/section4.html">section4.md</a></li>
+</ul>
+</div>
+</aside>
+
+<article>
+<h2>第 4 章	对象与类</h2>
+<h3>1.面向对象</h3>
+<ul>
+<li><strong>面向对象编程</strong>，是一种通过<strong>对象</strong>的方式，把<strong>现实世界映射到计算机模型</strong>的一种编程方法。</li>
+<li>面向对象程序设计：程序由对象来组成</li>
+<li>类：构造对象的模板或蓝图</li>
+<li>对象：类的实例化</li>
+</ul>
+<blockquote>
+<p>类和对象的关系好比 模具 和 具体的用模具实际做出来的东西</p>
+</blockquote>
+<p>这一节里其实还提到了封装和继承的概念</p>
+<p>封装，以前的我理解为封装就是将类里的字段对外隐藏，而其他类想要改变这些字段只能调用我的公共方法，而不可以直接修改。在读第二遍的时候，我发现封装的思想主要是为了<strong>隐藏自己内部的实现</strong>（内部实现不重要，重要的是对外提供的方法），保证了独立性。</p>
+<p>继承就是通过扩展一些已有的类来构建新的类，而且新的类将会具有被扩展类的全部属性和方法，提高了<strong>重用性</strong>。</p>
+<h3>2.使用预定义类</h3>
+<h4>构造器</h4>
+<ul>
+<li>用来构造并初始化对象的一种特殊的方法</li>
+<li>构造器的名字应该与类名相同</li>
+</ul>
+<p>这里要明确一个东西，比方说，我定义了一个类叫做<code>Animal</code>，然后做了如下的操作</p>
+<pre><code class="language-java">Animal mAnimal;
+</code></pre>
+<p>此时，<code>mAnimal</code>叫做<strong>对象变量</strong>，它是一个<strong>变量</strong>，<strong>不是一个对象</strong></p>
+<p>然后做如下操作</p>
+<pre><code class="language-java">mAnimal = new Animal();
+</code></pre>
+<p>此时<code>mAnimal</code><strong>引用了一个对象</strong></p>
+<p><strong>变量只能是引用对象</strong></p>
+<h4>更改器方法和访问器方法</h4>
+<ul>
+<li>更改器方法描述的是使用了方法之后，对象的状态会改变</li>
+<li>访问器方法描述的是使用了方法之后，对象的状态没有改变</li>
+</ul>
+<h3>3.用户自定义类</h3>
+<h4>隐式参数与显示参数</h4>
+<p>一句话，隐式参数是调用方法的对象本身（在方法中可用<code>this</code>来表示），显示参数是方法名后面的数值</p>
+<h4>Java中4种访问修饰符</h4>
+<ul>
+<li><code>private</code>：仅对本类可见</li>
+<li><code>public</code>：对外部完全可见</li>
+<li><code>protected</code>：对本包及所有子类可见</li>
+<li><code>默认（无需修饰符）</code>：对本包可见</li>
+</ul>
+<h3>4.静态字段和静态方法</h3>
+<h4>静态字段</h4>
+<p>静态字段即用<code>static</code>修饰的字段，静态字段是属于<strong>类</strong>，不属于单个任何对象的</p>
+<h4>静态方法</h4>
+<p>用<code>static</code>修饰的方法，属于类，不属于对象，即在静态方法中不能使用<code>this</code>关键字（即，<strong>没有隐式参数</strong>），静态方法不能访问实例字段，但是可以访问静态字段</p>
+<h3>5.方法参数</h3>
+<p>跳过</p>
+<h3>6.对象构造</h3>
+<h4>重载</h4>
+<ul>
+<li>方法签名：通过指定<strong>方法名</strong>和<strong>参数类型</strong>来描述一个方法</li>
+<li>重载即是出现了多个方法，<strong>有相同的名字，但是不同的参数</strong>，程序会在调用方法时根据参数类型来选择使用哪一个方法</li>
+</ul>
+<h4>调用构造器后的处理的优先级顺序</h4>
+<ol>
+<li>如果第一行调用了另一个构造器（使用<code>this(...)</code>，另外，在构造器中调用另一个构造器这个语句也只能写在<strong>第一行</strong>），则执行另一个构造器</li>
+<li>否则则先后执行：
+<ol>
+<li>静态字段</li>
+<li>静态的初始化块</li>
+<li>所有实例字段初始化为默认值（0，false，null）</li>
+<li>初始化块</li>
+</ol>
+</li>
+<li>最后才是执行构造器主体代码</li>
+</ol>
+<blockquote>
+<p>以前总弄不清静态字段还有静态代码块的执行顺序，今天读到这里，可谓天清地明</p>
+</blockquote>
+<h3>7.包</h3>
+<p>使用包来确保类名的<strong>唯一性</strong></p>
+<p>静态导入</p>
+
+</article>
+</main>

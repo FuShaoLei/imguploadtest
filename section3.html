@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title>section3.md</title>
+</head>
+<body>
+<main>
+<aside>
+<a href="https://fushaolei.github.io/imguploadtest/">/index</a>
+<div class="menu-item">
+<div class="menu-title">Android</div>
+<ul>
+<li><a href="https://fushaolei.github.io/imguploadtest/common.html">common.md</a></li>
+<li><a href="https://fushaolei.github.io/imguploadtest/kotlin-flesh-learn.html">kotlin-flesh-learn.md</a></li>
+</ul>
+</div>
+<div class="menu-item">
+<div class="menu-title">Java</div>
+<ul>
+<li><a href="https://fushaolei.github.io/imguploadtest/section3.html">section3.md</a></li>
+<li><a href="https://fushaolei.github.io/imguploadtest/section4.html">section4.md</a></li>
+</ul>
+</div>
+</aside>
+
+<article>
+<h2>第 3 章 	Java的基本程序设计结构</h2>
+<h3>1.第一个程序</h3>
+<pre><code class="language-java">public class Hello {
+	public static void main(String[] args) {
+		System.out.println(&quot;Hello World&quot;);
+	}
+}
+</code></pre>
+<p>说明</p>
+<ul>
+<li><code>public</code>（访问修饰符） 用于控制对所修饰的类或对象或字段的<strong>访问级别</strong></li>
+<li>class表示这是一个类，Hello则是这个类的类名</li>
+<li>main方法是所有程序的<strong>入口</strong></li>
+<li>大括号表示方法体的开始与结束</li>
+</ul>
+<h3>2.注释</h3>
+<pre><code class="language-java">//单行注释
+
+/*
+多行注释，（不能嵌套使用）
+*/
+
+/**
+ * 文档注释
+ * 可用于自动的生成文档
+ */
+</code></pre>
+<h3>3.数据类型</h3>
+<p>基本类型 | 位数 | 字节 | 默认值
+--|--|--|--
+<code>int</code> | 32 |4 | 0
+<code>short</code>|16|2|0
+<code>long</code>|64 |8 |0L
+<code>byte</code>| 8 |1 |0
+<code>char</code>|16|2|'u0000'
+<code>float</code> | 32 |4 |0f
+<code>double</code>|64 |8 |0d
+<code>boolean</code>|1 | |false</p>
+<h3>4.变量与常量</h3>
+<h4>变量</h4>
+<h5>声明变量</h5>
+<pre><code class="language-java">int a;
+String name;
+</code></pre>
+<p>即 以<code>变量类型</code>  <code>变量名</code>这种形式来声明一个变量</p>
+<h5>变量初始化</h5>
+<p>声明一个变量后，必须用赋值语句对变量进行<strong>显式初始化</strong>，如下</p>
+<pre><code class="language-java">int a = 0;
+String name = &quot;任我行&quot;;
+</code></pre>
+<h4>常量</h4>
+<blockquote>
+<p>常量就是值不会变的变量</p>
+</blockquote>
+<p>可用<code>final</code>关键字来修饰常量，而且通常此常量名为大写</p>
+<pre><code class="language-java">public final String BAIDU_URL = &quot;www.baidu.com&quot;;
+</code></pre>
+<h4>枚举类型</h4>
+<blockquote>
+<p>作用：限制变量的取值范围</p>
+</blockquote>
+<p>如下：</p>
+<pre><code class="language-java">    enum Size {SMALL,MEDIUM,LARGE,EXTRA_LARGE};
+</code></pre>
+<p>那么<code>Size</code>类型的变量只能取里边的值</p>
+<h3>5.运算符</h3>
+<h4>算术运算符</h4>
+<p>| 算术运算符 | 表示 |
+| ---------- | ---- |
+| <code>+</code>        | 加   |
+| <code>-</code>        | 减   |
+| <code>*</code>        | 乘   |
+| <code>/</code>        | 除   |
+| <code>%</code>        | 取模 |</p>
+<h4>类型转换</h4>
+<ul>
+<li>如参与运算的两个数类型不一致，则结果为较大类型的整型</li>
+<li>强制转换：(有可能损失信息)</li>
+</ul>
+<h4>其他运算符</h4>
+<ul>
+<li>二元运算符：例如<code>x+=4;</code>，运算符放于等号左边</li>
+<li>自增自减运算符
+<ul>
+<li><code>++x</code> 前缀形式会先加1再使用</li>
+<li><code>x++</code> 后缀形式会先使用原来的值，之后才加1</li>
+</ul>
+</li>
+<li>关系运算符：如<code>==</code>,<code>!=</code>，<code>&gt;=</code>之类的，还有<code>&amp;&amp;</code>和<code>||</code></li>
+<li>三元运算符：<code>x&gt;0 ? true : false</code>如表达式为真，则为<code>true</code>，如假则为<code>false</code></li>
+</ul>
+<h4>短路（<code>&amp;&amp;</code>和<code>||</code>运算符的逻辑）</h4>
+<p>如果第一个操作数已经能够确定表达式的值，第二个操作数就不必再计算了</p>
+<h3>6.字符串</h3>
+<blockquote>
+<p>这一节其实感觉没有什么好记的。。。</p>
+</blockquote>
+<pre><code class="language-java">String hello = &quot;Hello&quot;;
+// 取子串
+String s = hello.substring(0,3);// Hel
+// 判断是否相等
+if(hello.equals(&quot;Hello&quot;)){
+    //....
+}
+// 构建字符串
+StringBuilder builder = new StringBuilder();
+builder.append(&quot;builder&quot;);
+builder.append(&quot;str&quot;);
+String builderString = builder.toString();
+System.out.println(builderString);
+</code></pre>
+<h3>7.输入与输出</h3>
+<h4>输入</h4>
+<pre><code class="language-java">Scanner input=new Scanner(System.in);
+System.out.printf(&quot;请输入一个数字: &quot;);
+int num=input.nextInt();//输入
+System.out.println(&quot;你输入的数字是：&quot;+num);//输出
+</code></pre>
+<h4>输出</h4>
+<pre><code class="language-java">System.out.print(&quot;普通输出&quot;);
+System.out.println(&quot;输出后换行&quot;);
+System.out.printf(&quot;格式化输出 %.2f&quot;, 10000.0 / 3.0);
+</code></pre>
+<h3>8.控制流程</h3>
+<h5>条件分支流程</h5>
+<p>普通分支语句</p>
+<pre><code class="language-java">int a = 1;
+int b = 2;
+if (a &gt; b) {
+    System.out.println(&quot;a大于b&quot;);//如果a大于b则执行这个语句
+} else if (a == b) {
+    System.out.println(&quot;a等于b&quot;);//如果a等于b则执行这个语句
+} else {
+    System.out.println(&quot;a小于b&quot;);//否则就a小于b，当以上两种情况都不是的时候执行
+}
+</code></pre>
+<p>条件多分支语句</p>
+<pre><code class="language-java">int g=2;
+switch(g) {
+    case 1:{
+        System.out.println(&quot;是1&quot;);//当g是1时执行
+        break;
+    }
+    case 2:{
+        System.out.println(&quot;是2&quot;);//当g是2时执行
+        break;
+    }
+    default:{
+        System.out.println(&quot;都不是&quot;);//当以上情况都不是的时候执行
+        break;
+    }
+}
+</code></pre>
+<h5>循环流程</h5>
+<p>根据条件，反复执行某些操作</p>
+<h6><code>for</code></h6>
+<pre><code class="language-java">	for(int i=0;i&lt;5;i++) {//int i=0是初始值，i&lt;5是循环条件。i++是循环后更新i的值，然后进入下一轮循环
+		System.out.println(&quot;循环第&quot;+i+&quot;次&quot;);
+	}
+</code></pre>
+<h6><code>while</code></h6>
+<pre><code class="language-java">		int u=5;
+		while(u&gt;0) {//当为true时执行
+			System.out.println(&quot;u=&quot;+u);
+			--u;
+		}
+</code></pre>
+<h6><code>do</code>..<code>while</code></h6>
+<pre><code class="language-java">		int p=0;
+		do {//无条件进入循环
+			++p;
+			System.out.println(&quot;p=&quot;+p);
+		}while(p&lt;5);//首先执行一次循环体后进行判断，若为true则继续进行下去
+</code></pre>
+<h6><code>for each</code>（增强型<code>for</code>循环）</h6>
+<pre><code class="language-java">for ( 类型 变量名: 数组或集合 ) {
+循环体
+}
+</code></pre>
+<p>与普通for循环的区别：<strong>for each循环语句的循环变量将会遍历数组中的每个元素，而不是下标值</strong></p>
+<h4>中断控制流程的语句</h4>
+<p><strong>break</strong>：跳出一个switch case 或者一个循环</p>
+<p><strong>带标签的break</strong>：</p>
+<pre><code class="language-java">int a = 1;
+read_data: // 标签名（放在希望跳出的最外层的循环之前），后面跟着冒号
+while (true) {
+    if (a == 1) break read_data;// break后要带着标签
+    System.out.println(&quot;in&quot;);
+}
+// 当里边发生了break read_data就会跳到下面这个语句
+System.out.println(&quot;out&quot;);
+</code></pre>
+<p>主要用在一些嵌套很深的循环语句中，希望发生失误后完全跳出循环体</p>
+<p><strong>continue</strong>：将控制转移到最内层循环的首部</p>
+<h3>9.大数</h3>
+<ul>
+<li><code>BigInteger</code>实现任意精度的整数运算</li>
+<li><code>BigDecimal</code>实现任意精度的浮点数运算</li>
+</ul>
+<h3>10.数组</h3>
+<ul>
+<li>存储一组具有<strong>相同数据类型</strong>的数据元素的有序集合</li>
+<li>用<code>new</code>操作符创建数组，整数类型的所有元素初始化为0，boolean类型的初始化为false，对象类型的则初始化为null</li>
+<li>数组一旦被创建，长度就不能修改了</li>
+</ul>
+<pre><code class="language-java">// 声明
+int num[];
+int[] sum;
+// 静态初始化
+int num[]={1,2,3,4,5}
+//动态初始化
+int num[]=new int[5];//预先分配内存空间
+for(int i=0;i&lt;5;i++){
+	num[i]=i*3;
+}
+</code></pre>
+
+</article>
+</main>

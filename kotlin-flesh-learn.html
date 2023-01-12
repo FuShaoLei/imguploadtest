@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title>kotlin-flesh-learn.md</title>
+</head>
+<body>
+<main>
+<aside>
+<a href="https://fushaolei.github.io/imguploadtest/">/index</a>
+<div class="menu-item">
+<div class="menu-title">Android</div>
+<ul>
+<li><a href="https://fushaolei.github.io/imguploadtest/common.html">common.md</a></li>
+<li><a href="https://fushaolei.github.io/imguploadtest/kotlin-flesh-learn.html">kotlin-flesh-learn.md</a></li>
+</ul>
+</div>
+<div class="menu-item">
+<div class="menu-title">Java</div>
+<ul>
+<li><a href="https://fushaolei.github.io/imguploadtest/section3.html">section3.md</a></li>
+<li><a href="https://fushaolei.github.io/imguploadtest/section4.html">section4.md</a></li>
+</ul>
+</div>
+</aside>
+
+<article>
+<h1>Kotlin快速入门</h1>
+<p>kotlin中没有分号</p>
+<p>kotlin中在后边进行类型的声明</p>
+<h2>函数</h2>
+<pre><code class="language-kotlin">/**
+ * main函数，同java一样，程序的入口
+ * Unit表示返回值为空
+ */
+fun main():Unit{
+    println(&quot;Hello Kotlin!&quot;)
+}
+// 带参数的函数
+fun test(x:Int):Int{
+    return x*2
+}
+// 函数参数默认值
+@JvmOverloads // 表示重载，在java代码中可以使用
+fun msg(name: String, age: Int = 19) { // 这里的age默认为19
+    println(&quot;name = $name , age = $age&quot;)
+}
+</code></pre>
+<h2>变量</h2>
+<ul>
+<li>var声明为可变的</li>
+<li>val声明为只读的（相当于Java中加上final的变量）</li>
+</ul>
+<pre><code class="language-kotlin">// 可写成 var age = 18，系统会自动识别
+var age: Int = 18
+val NAME = &quot;JulyPost&quot;
+// 创建对象直接如此，不需要new关键字了
+var person = Person()
+</code></pre>
+<h2>可空类型和不可空类型</h2>
+<p>在kotlin里，所有的变量都默认是<strong>不允许为空</strong>的</p>
+<pre><code class="language-kotlin">var a: String = &quot;abc&quot; // 非空类型
+var b: String? = &quot;cba&quot; // 可空类型
+a = null // 赋空报错
+b = null // 可赋为空
+lateinit var username:TextView // 延迟初始化
+</code></pre>
+<h2>调用符</h2>
+<pre><code class="language-kotlin">var b: String? = &quot;cba&quot; // 可空类型
+println(b?.length) // 安全调用，如果不是空的话就调用length方法，如果是空的话就不做任何事
+println(b!!.length) // 强制调用
+</code></pre>
+<p>安全调用符号<code>?.</code>会检查是否非空，非空则返回<code>b.length</code>，而强制调用<code>!!.</code>则会强制调用<code>b.length</code></p>
+<h2>构造器</h2>
+<pre><code class="language-kotlin">// 空构造
+constructor()
+// 带参数的构造
+constructor(context:Context)
+// 调用其他构造器
+constructor(context:Context):this(context,null)
+// 调用父类构造器
+constructor(context:Context):super(context,1)
+</code></pre>
+<h2><code>Any</code>和<code>Unit</code></h2>
+<p><code>Any</code>可以对应java中的<code>Object</code></p>
+<p><code>Unit</code>可以对应java中的<code>void</code></p>
+<h2>各种集合</h2>
+<pre><code class="language-kotlin">var dataList = arrayOf(&quot;xx&quot;, &quot;aa&quot;) // 定义一个数组
+</code></pre>
+<h2>静态函数和属性</h2>
+<ul>
+<li>顶层函数（直接在kt文件里定义函数）</li>
+<li>object声明一个单例对象，可直接使用</li>
+<li>companion object 也是生成一个单例对象</li>
+<li><code>@JvmStatic</code>：通过这个注解，让object和companion object 的内部函数和属性，真正的生成为<strong>静态</strong></li>
+</ul>
+<p>另外，匿名内部类是用的object关键字进行创建的</p>
+<pre><code class="language-kotlin">object : OnClickListener {
+    // ....
+}
+</code></pre>
+<h2>字符串</h2>
+<pre><code class="language-kotlin">val name = &quot;任我行&quot;
+val text = &quot;我是${name}&quot; // 拼接字符串,还可以是函数的返回值
+val text = &quot;&quot;&quot;
+        我的第一行
+        我是第二行
+        我是第三行
+    &quot;&quot;&quot;.trimIndent() // 多行字符串
+</code></pre>
+<h2>when</h2>
+<p>switch的高级版，分支条件支持表达式，在kotlin里，if和when都是有返回值的</p>
+<pre><code class="language-kotlin">var num = 21
+when (num) {
+    in 1..10 -&gt; println(&quot;小于10&quot;)
+    in 11..20 -&gt; println(&quot;小于20&quot;)
+    in 21..30 -&gt; println(&quot;小于30&quot;)
+    else -&gt; println(&quot;未知&quot;)
+}
+// 还可以这样使用
+fun getScore(name: String) = when {
+    name == &quot;Tom&quot; -&gt; 86
+    name == &quot;Jim&quot; -&gt; 77
+    else -&gt; 0
+}
+</code></pre>
+<h2>for，遍历</h2>
+<pre><code class="language-kotlin">// 左闭右闭
+for (i in 0..10){
+    println(i)
+}
+// 左闭右开
+for (i in 0 until 10) {
+    println(i)
+}
+// 步长为2
+for (i in 0 .. 10 step 2) {
+    println(i)
+}
+// 降序
+for (i in 10 downTo 1) {
+    println(i)
+}
+
+// 对象
+for (item in persons) {
+    println(item.toString())
+}
+
+for (i in persons.indices) {
+    println(&quot;persons[$i] = ${persons[i]}&quot;)
+}
+</code></pre>
+<h2>各种声明</h2>
+<pre><code class="language-kotlin">// 抽象类
+abstract class className{...}
+// 接口
+interface className{...}
+// 注解
+annotation class className{...}
+// 枚举
+enmu class className{...}
+// 数据类
+data class className{...}
+</code></pre>
+<h2>标准函数</h2>
+<pre><code class="language-kotlin">// let会将变量传入表达式中，主要作用就是配合?.来进行判空处理
+fun doStudy(name:String?){
+    name?.let {
+        println(&quot;$it is studying&quot;)
+    }
+}
+// with会在lambda表达式中提供第一个参数对象的上下文，并使用lambda表达式中的最后一行作为返回值返回
+val list = listOf(&quot;Apple&quot;, &quot;Banana&quot;, &quot;Orange&quot;)
+var builder = StringBuilder()
+val result = with(builder) {
+    append(&quot;Start&quot;)
+    for (fruit in list) append(&quot;$fruit \n&quot;)
+    append(&quot;finish&quot;)
+    toString()
+}
+println(result)
+// run其实和with很相似
+val list = listOf(&quot;Apple&quot;, &quot;Banana&quot;, &quot;Orange&quot;)
+var builder = StringBuilder()
+val result = builder.run {
+    append(&quot;Start&quot;)
+    for (fruit in list) append(&quot;$fruit \n&quot;)
+    append(&quot;finish&quot;)
+    toString()
+}
+println(result)
+// apply和run很相似，但是无法指定返回值
+val list = listOf(&quot;Apple&quot;, &quot;Banana&quot;, &quot;Orange&quot;)
+var builder = StringBuilder()
+val result = builder.apply {
+    append(&quot;Start&quot;)
+    for (fruit in list) append(&quot;$fruit \n&quot;)
+    append(&quot;finish&quot;)
+}
+println(result.toString())
+</code></pre>
+<h2>编译期常量</h2>
+<p>在静态变量上加上<code>const</code>关键字</p>
+<pre><code class="language-kotlin">companion object {
+    const val GOOGLE_URL = &quot;https://www.google.com/&quot;;
+}
+</code></pre>
+<h2>内部类</h2>
+<pre><code class="language-kotlin">class outer{
+    // 默认静态内部类
+    class inner1{
+        
+    }
+    // 嵌套内部类
+    inner class inner2{
+        
+    }
+}
+</code></pre>
+<h2><code>internal</code></h2>
+<p>当前模块可见</p>
+<h2><code>open</code>和<code>final</code></h2>
+<p>在kotiln中，类和函数默认是被<code>final</code>修饰的（除了<code>abstract</code>和<code>override</code>外）</p>
+<p>而使用open来修饰，就表示可以继承</p>
+<h2>主构造器和<code>init</code></h2>
+<pre><code class="language-kotlin">class Activity constructor(name: String?) {
+    private var name: String? = null
+
+    init { // init是初始化代码块
+        this.name = name
+    }
+}
+</code></pre>
+<p>更简洁的写法：</p>
+<pre><code class="language-kotlin">class Activity constructor(var name: String?) {
+    // 在构造的时候就定义变量
+}
+</code></pre>
+<h2><code>==</code>和<code>===</code></h2>
+<ul>
+<li><code>==</code>调用<code>equals()</code>进行比较</li>
+<li><code>===</code>比较引用地址</li>
+</ul>
+<h2><code>?:</code></h2>
+<p>在kotiln中，这是一个用于简化<code>if null</code>的操作符</p>
+<pre><code class="language-kotlin">name?:&quot;令狐冲&quot; // 如果name是null的话，则赋值为&quot;令狐冲&quot;
+</code></pre>
+<h2>扩展函数</h2>
+<p>可以如此使用：</p>
+<pre><code class="language-kotlin">fun main() {
+    var text = &quot;乌拉&quot;
+    println(text.msg())
+}
+
+fun String.msg(): String {
+    return &quot;====&gt; $this&quot;
+}
+
+</code></pre>
+<h2>委托</h2>
+<pre><code class="language-kotlin">val name: String by lazy {&quot;萧峰&quot;} // 延迟，语句只在第一次访问时执行
+</code></pre>
+<h2>协程</h2>
+<p>是一套由Kotlin官方提供的线程API，优势在于可以把不同线程的代码写在同一代码块</p>
+<h2>密封类</h2>
+<pre><code class="language-kotlin">// kotlin会自动检查该密封类有哪些子类
+sealed class Result
+class Success(val msg:String):Result()
+
+class Failure(val error:Exception):Result()
+
+// 当使用when传入一个密封类时，kotlin编译器会自动检测此密封类有哪些子类，并强制要求你每一个情况都有做处理，好处是不用编写else语句了
+fun getResultMsg(result: Result) = when(result) {
+    is Success -&gt; result.msg
+    is Failure -&gt; &quot;error is ${result.error.message}&quot;
+}
+</code></pre>
+<h2>内联函数</h2>
+<p>kotlin编译器会将内联函数中的代码在编译的时候自动替换到调用它的地方，它可以将使用Lambda表达式带来的运行时开销完全消除</p>
+<p>inline 表示这是一个内联函数，里面的所以Lambda表达式都会被内联，但是在参数前加上noinline表示不内联</p>
+<p>这是因为内联的函数类型参数在编译的时候会被进行代码替换，因此它没有真正的参数属性。<strong>非内联的函数类型参数可以自由地传递给其他任何函数</strong>，因为它就是一个真实的参数，<strong>而内联的函数类型参数只允许传递给另外一个内联函数</strong>，这也是它最大的局限性。</p>
+<p>而加上crossinline表示内联函数Lambda表达式中一定不会有return关键字（但是可以有局部返回例如return@printString）</p>
+<pre><code class="language-kotlin">inline fun inlineTest(block1: () -&gt; Unit, noinline block2: () -&gt; Unit, crossinline block3: () -&gt; Unit) {
+}
+</code></pre>
+<h2>运算符重载</h2>
+<p>kotlin允许我们将所有的运算符甚至其他关键字进行重载</p>
+<pre><code class="language-kotlin">class Money(val value: Int) {
+
+    operator fun plus(money: Money): Money {
+        val sum = value + money.value
+        return Money(sum)
+    }
+
+    operator fun plus(num: Int): Money {
+        val sum = value + num
+        return Money(sum)
+    }
+}
+// 使用
+fun main() {
+    val m1 = Money(29)
+    val m2 = Money(10)
+    val m3 = m1 + m2
+    val m4 = m1 + 1
+
+    println(&quot;m3.value  = ${m3.value}&quot;) // 39
+    println(&quot;m4.value  = ${m4.value}&quot;) // 30
+}
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/fushaolei/img//img/202210231801730.png" alt="" /></p>
+
+</article>
+</main>

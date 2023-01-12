@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title>common.md</title>
+</head>
+<body>
+<main>
+<aside>
+<a href="https://fushaolei.github.io/imguploadtest/">/index</a>
+<div class="menu-item">
+<div class="menu-title">Android</div>
+<ul>
+<li><a href="https://fushaolei.github.io/imguploadtest/common.html">common.md</a></li>
+<li><a href="https://fushaolei.github.io/imguploadtest/kotlin-flesh-learn.html">kotlin-flesh-learn.md</a></li>
+</ul>
+</div>
+<div class="menu-item">
+<div class="menu-title">Java</div>
+<ul>
+<li><a href="https://fushaolei.github.io/imguploadtest/section3.html">section3.md</a></li>
+<li><a href="https://fushaolei.github.io/imguploadtest/section4.html">section4.md</a></li>
+</ul>
+</div>
+</aside>
+
+<article>
+<h2>安装aab包</h2>
+<p>首先你得有Java的环境，然后还要去<a href="https://github.com/google/bundletool/releases">https://github.com/google/bundletool/releases</a>下载一个jar包</p>
+<p>然后将你的<strong>aab包</strong>，<strong>.jks文件</strong>，和上面下载的jar包放到同一目录下（当然，不放在一起也行。。）</p>
+<p>然后在小黑块中进入这个目录执行：</p>
+<pre><code>java -jar bundletool-all-1.13.0.jar build-apks --bundle=./xxx.aab --output=./app-dubug.apks --ks=./xxx.jks --ks-pass=pass:xxx --ks-key-alias=xxxx --key-pass=pass:xxx --connected-device
+
+java -jar bundletool-all-1.13.0.jar install-apks --apks=./app-dubug.apks
+</code></pre>
+<h2>adb安装apk命令</h2>
+<p>先用adb devices查看连接的设备，并复制设备id，然后</p>
+<pre><code class="language-xml">adb -s 设备ID install apk路径
+</code></pre>
+<h2>安装aab包</h2>
+<p>首先你得有Java的环境，然后还要去<a href="https://github.com/google/bundletool/releases">https://github.com/google/bundletool/releases</a>下载一个jar包</p>
+<p>然后将你的<strong>aab包</strong>，<strong>.jks文件</strong>，和上面下载的jar包放到同一目录下（当然，不放在一起也行。。）</p>
+<p>然后在小黑块中进入这个目录执行：</p>
+<pre><code>java -jar bundletool-all-1.13.0.jar build-apks --bundle=./xxx.aab --output=./app-dubug.apks --ks=./xxx.jks --ks-pass=pass:xxx --ks-key-alias=xxxx --key-pass=pass:xxx --connected-device
+
+java -jar bundletool-all-1.13.0.jar install-apks --apks=./app-dubug.apks
+</code></pre>
+<h2>android自适应横屏</h2>
+<pre><code class="language-xml">&lt;activity
+          android:name=&quot;.MainActivity&quot;
+          android:screenOrientation=&quot;sensorLandscape&quot;
+          android:exported=&quot;true&quot;&gt;
+&lt;/activity&gt;
+</code></pre>
+<h2>自适应大小的TextView</h2>
+<pre><code class="language-xml">&lt;TextView
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:maxLines=&quot;1&quot;
+    android:text=&quot;17:58&quot;
+    android:textColor=&quot;#fff&quot;
+    android:gravity=&quot;center&quot;
+    android:textSize=&quot;500sp&quot;
+    app:autoSizeMaxTextSize=&quot;500sp&quot;
+    app:autoSizeMinTextSize=&quot;100sp&quot;
+    app:autoSizeStepGranularity=&quot;1sp&quot;
+    app:autoSizeTextType=&quot;uniform&quot;
+    app:layout_constraintBottom_toBottomOf=&quot;parent&quot;
+    app:layout_constraintEnd_toEndOf=&quot;parent&quot;
+    app:layout_constraintStart_toStartOf=&quot;parent&quot;
+    app:layout_constraintTop_toTopOf=&quot;parent&quot; /&gt;
+</code></pre>
+<h2>Android 隐藏状态栏</h2>
+<pre><code class="language-kotlin">// Hide the status bar.
+window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+// Remember that you should never show the action bar if the
+// status bar is hidden, so hide that too if necessary.
+actionBar?.hide()
+    
+// 具体看： https://developer.android.google.cn/training/system-ui/status?hl=zh-cn#kotlin
+</code></pre>
+
+</article>
+</main>
