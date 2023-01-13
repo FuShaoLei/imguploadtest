@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        article,
+        footer,
+        header,
+        menu,
+        nav,
+        section {
+            display: block;
+        }
+
+        body {
+            font-size: 1.4rem;
+            background-color: #2E3033;
+            color: #DEDEDE;
+        }
+
+        body a{
+            color: #DEDEDE;
+        }
+
+        .leftArea {
+            bottom: 0px;
+            left: 0px;
+            overflow: auto;
+            padding-left: 0.5em;
+            padding-right: 0.5em;
+            position: absolute;
+            right: auto;
+            text-align: left;
+            top: 0em;
+            width: 300px;
+        }
+
+        .rightArea {
+            bottom: 0px;
+            left: 300px;
+            overflow: auto;
+            padding-left: 0.5em;
+            padding-right: 0.5em;
+            position: absolute;
+            right: 0px;
+            text-align: left;
+            top: 0em;
+            max-
+        }
+    </style>
+    <title>《计算机网络》笔记.md</title>
+</head>
+
+<body>
+    <main>
+        <aside class="leftArea">
+                <a href="https://fushaolei.github.io/imguploadtest/index.html">index.md</a>
+                     <div class="menu-item">
+                        <div class="menu-title">./Android</div>
+                        <ul>
+                                <li><a href="https://fushaolei.github.io/imguploadtest/common.html">common.md</a></li>
+                                <li><a href="https://fushaolei.github.io/imguploadtest/kotlin-flesh-learn.html">kotlin-flesh-learn.md</a></li>
+                        </ul>
+                    </div>
+                     <div class="menu-item">
+                        <div class="menu-title">./Java</div>
+                        <ul>
+                                <li><a href="https://fushaolei.github.io/imguploadtest/section3.html">section3.md</a></li>
+                                <li><a href="https://fushaolei.github.io/imguploadtest/section4.html">section4.md</a></li>
+                        </ul>
+                    </div>
+                     <div class="menu-item">
+                        <div class="menu-title">./读书笔记</div>
+                        <ul>
+                                <li><a href="https://fushaolei.github.io/imguploadtest/《Android开发艺术探索》.html">《Android开发艺术探索》.md</a></li>
+                                <li><a href="https://fushaolei.github.io/imguploadtest/《Java核心技术卷Ⅰ》笔记.html">《Java核心技术卷Ⅰ》笔记.md</a></li>
+                                <li><a href="https://fushaolei.github.io/imguploadtest/《图解HTTP》笔记.html">《图解HTTP》笔记.md</a></li>
+                                <li><a href="https://fushaolei.github.io/imguploadtest/《数据结构》笔记.html">《数据结构》笔记.md</a></li>
+                                <li><a href="https://fushaolei.github.io/imguploadtest/《第一行代码》笔记.html">《第一行代码》笔记.md</a></li>
+                                <li><a href="https://fushaolei.github.io/imguploadtest/《计算机网络》笔记.html">《计算机网络》笔记.md</a></li>
+                                <li><a href="https://fushaolei.github.io/imguploadtest/《软技能》笔记.html">《软技能》笔记.md</a></li>
+                        </ul>
+                    </div>
+        </aside>
+
+        <article class="rightArea">
+            <h1>《计算机网络》笔记</h1>
+<p>谢希仁老师版本的，其实也已经看过有两三遍了，但是之前没做比较，现在重读，做做笔记，温故而知新嘛</p>
+<h2>第 1 章 概述</h2>
+<p>互联网的两个基本特点：<strong>连通性</strong>（用户之间可以交互数据），<strong>共享</strong>（资源共享）</p>
+<p>互联网的组成：</p>
+<ul>
+<li>边缘部分：连接互联网的主机，用户直接使用</li>
+<li>核心部分：网络和连接网路的路由器，为边缘部分提供服务的</li>
+</ul>
+<p>边缘部分的通信即是计算机之间的通信，通信方式又有两种</p>
+<ul>
+<li>客户-服务器方式（C/S）：client是服务请求方，server是服务提供方</li>
+<li>对等方式（P2P）：无论哪一方都可以是服务请求方或服务提供方</li>
+</ul>
+<p>核心部分起到关键作用的是路由器，其任务是转发收到的分组（即分组交换，优点是高效，灵活，迅速，可靠）</p>
+<p>三种交换方式：</p>
+<ul>
+<li>电路交换：整个报文连续的从源点到终点</li>
+<li>报文交换：整个报文一个结点一个结点的传到终点</li>
+<li>分组交换：单个分组一个结点一个结点的传到终点</li>
+</ul>
+<p>计算机的性能指标：速率，带宽，吞吐量，时延（发送时延，传播时延，处理时延，排队时延），时延带宽积，往返时间，利用率</p>
+<p>网络体系：</p>
+<ul>
+<li>TCP/IP：应用层，运输层，网际层IP，网络接口层</li>
+<li>本书的五层协议：
+<ul>
+<li>应用层：负责应用进程之间的交互工作</li>
+<li>运输层：负责两台主机进程之间通信工作</li>
+<li>网络层：负责为分组交换网上的不同主机提供通信服务，寻找路由</li>
+<li>数据链路层：差错检测，可靠传输</li>
+<li>物理层</li>
+</ul>
+</li>
+</ul>
+<h2>第 5 章 运输层</h2>
+<p>运输层向上层应用提供通信服务</p>
+<p>运输层为应用进程之间提供端到端的逻辑通信，而IP协议的作用是提供主机之间的逻辑通信</p>
+<p>两个主要协议：</p>
+<ul>
+<li>TCP（Transmission Control Protocol）：面向连接的服务，传送数据之前必须先建立连接，结束后释放连接</li>
+<li>UDP（User Datagram Protocol）：传送数据之前不需要先建立连接</li>
+</ul>
+<p>两个计算机中的进程要相互通信，必须知道：</p>
+<ul>
+<li>对方的IP地址：为了找到对方的计算机</li>
+<li>对方的端口号：为了找到对方计算机中的应用程序</li>
+</ul>
+<p>常见端口号：</p>
+<table>
+<thead>
+<tr>
+<th>应用程序</th>
+<th>端口</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FTP</td>
+<td>21</td>
+</tr>
+<tr>
+<td>TELNET</td>
+<td>23</td>
+</tr>
+<tr>
+<td>SMTP</td>
+<td>25</td>
+</tr>
+<tr>
+<td>DNS</td>
+<td>53</td>
+</tr>
+<tr>
+<td>TFTP</td>
+<td>69</td>
+</tr>
+<tr>
+<td>HTTP</td>
+<td>80</td>
+</tr>
+<tr>
+<td>SNMP</td>
+<td>161</td>
+</tr>
+<tr>
+<td>HTTPS</td>
+<td>443</td>
+</tr>
+</tbody>
+</table>
+<h3>UDP</h3>
+<p>特点</p>
+<ol>
+<li>是无连接的</li>
+<li>尽最大努力交付</li>
+<li>面向报文的</li>
+<li>没用拥塞控制</li>
+<li>支持一对一，一对多，多对一，多对多的交互通信</li>
+<li>首部开销小</li>
+</ol>
+<p>UDP的首部字段有（共8字节）：</p>
+<ol>
+<li>源端口</li>
+<li>目的端口</li>
+<li>长度</li>
+<li>校验和</li>
+</ol>
+<p>均为2字节</p>
+<h3>TCP</h3>
+<p>特点</p>
+<ol>
+<li>面向连接的</li>
+<li>每一个TCP连接只能有两个端点，即只能点对点</li>
+<li>提供全双工通信</li>
+<li>面向字节流</li>
+</ol>
+<p>TCP连接的端口叫做套接字（套接字：IP地址:端口号），每一条TCP连接唯一地被通信两端的两个套接字所确定</p>
+<h4>保证可靠传输的工作原理</h4>
+<p>停止等待协议：</p>
+<ol>
+<li>正常情况：A发送完一个分组的数据之后就暂停下来，等待B的确认，收到B的确认后再继续发送下一个分组、</li>
+<li>有差错情况：若是B收到分组时检测出了差错，就丢弃这个分组，A只要超过了一段时间没用收到确认，就会超时重传</li>
+<li>确认丢失：B对发送的到的分组的确认丢失了，A超时重传，这时B会丢弃这个重复的分组，然后向A发送确认</li>
+<li>确认迟到：A在收到迟到的确认的时候，什么都不做</li>
+</ol>
+<p>连续的ARQ协议（和滑动窗口协议有关）：</p>
+<ol>
+<li>发送方每收到一个确认，就把发送窗口向前滑动一个分组的位置</li>
+<li>接收方对<strong>按序到达</strong>的最后一个分组发送确认（也就是这个分组前面的分组都已收到了）</li>
+</ol>
+<h4>TCP的首部字段</h4>
+<ol>
+<li>源端口和目的端口</li>
+<li>序号</li>
+<li>确认号，期望对方下一个报文段的第一个序号</li>
+<li>数据偏移</li>
+<li>保留</li>
+<li><strong>控制位</strong>
+<ul>
+<li>紧急URG：为1时表示此报文段中有紧急数据</li>
+<li>确认ACK：ACK=1时，确认字段才有效，在连接建立后所以传送的报文段的ACK都必须置为1</li>
+<li>推送PSH：为1时表示立即推送</li>
+<li>复位RST：为1时表示出现了差错，重新建立连接</li>
+<li>同步SYN：在建立连接时用来同步的序号。当SYN=1而ACK=0时表示真是一个连接请求报文段，若对方同意则响应报文段中SYN=1，ACK=1。SYN=1表示一个连接请求或连接接受</li>
+<li>终止FIN：为1时表示此报文段发送方的数据已发送完毕，要求释放连接</li>
+</ul>
+</li>
+<li>窗口：发送报文段的<strong>接收窗口</strong></li>
+<li>校验和</li>
+<li>紧急指针</li>
+<li>选项</li>
+</ol>
+<h4>流量控制</h4>
+<p>流量控制：<strong>让发送方的发送速率不要太快，要让接收方来得及接收</strong>（指点对点通信量的控制）</p>
+<h4>拥塞控制</h4>
+<p>拥塞：对网络中某一资源的需求超过了该资源所能提供的可用部分</p>
+<p>拥塞控制：防止过多的数据注入到网络中，这样可以使网络中的路由器或链路不致过载</p>
+<p>TCP进行拥塞控制的算法（cwnd-<strong>拥塞窗口</strong>，ssthresh-<strong>慢开始门限</strong>）：</p>
+<ol>
+<li><strong>慢开始</strong>：每一个传输轮次，cwnd加倍（当cwnd&lt;=ssthresh）</li>
+<li><strong>拥塞避免</strong>：每一个传输轮次，cwnd+1（当cwnd&gt;ssthresh），当网络堵塞的时候，会调整ssthresh=cwnd/2</li>
+<li><strong>快重传</strong>：发送方一连收到3个重复确认，就表示接收方没有收到某些报文，然后立即进行重传</li>
+<li><strong>快恢复</strong>：当发生快重传时，会调整ssthresh=cwnd/2，并且使cwnd = ssthresh，并且开始执行<strong>拥塞避免算法</strong></li>
+</ol>
+<h4>TCP的运输连接管理</h4>
+<p>三次握手连接建立</p>
+<ol>
+<li>客户端向服务端发送SYN=1，seq=x表示请求连接</li>
+<li>服务端如同意连接，向客户端发送SYN=1，ACK=1，确认号ack=x+1，seq=y</li>
+<li>客户端收到服务端的确认后，向服务端发送确认ACK=1，seq=x+1，ack=y+1</li>
+</ol>
+<p>四次挥手释放连接</p>
+<ol>
+<li>客户端请求服务端释放连接，使FIN=1，seq=u</li>
+<li>服务端收到请求后发出确认，ack=u+1，seq=v，ACK=1。此时客户端就不能向服务端发数据了，但是服务端发数据，客户端仍要接收</li>
+<li>服务端请求客户端释放连接，FIN=1，ACK=1，seq=w，ack=u+1</li>
+<li>客户端在收到服务端的请求后发出确认，ACK=1，seq=u+1，ack=w+1</li>
+</ol>
+
+        </article>
+    </main>
+</body>

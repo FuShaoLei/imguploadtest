@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        article,
+        footer,
+        header,
+        menu,
+        nav,
+        section {
+            display: block;
+        }
+
+        body {
+            font-size: 1.4rem;
+            background-color: #2E3033;
+            color: #DEDEDE;
+        }
+
+        body a{
+            color: #DEDEDE;
+        }
+
+        .leftArea {
+            bottom: 0px;
+            left: 0px;
+            overflow: auto;
+            padding-left: 0.5em;
+            padding-right: 0.5em;
+            position: absolute;
+            right: auto;
+            text-align: left;
+            top: 0em;
+            width: 300px;
+        }
+
+        .rightArea {
+            bottom: 0px;
+            left: 300px;
+            overflow: auto;
+            padding-left: 0.5em;
+            padding-right: 0.5em;
+            position: absolute;
+            right: 0px;
+            text-align: left;
+            top: 0em;
+            max-
+        }
+    </style>
+    <title>《数据结构》笔记.md</title>
+</head>
+
+<body>
+    <main>
+        <aside class="leftArea">
+                <a href="https://fushaolei.github.io/imguploadtest/index.html">index.md</a>
+                     <div class="menu-item">
+                        <div class="menu-title">./Android</div>
+                        <ul>
+                                <li><a href="https://fushaolei.github.io/imguploadtest/common.html">common.md</a></li>
+                                <li><a href="https://fushaolei.github.io/imguploadtest/kotlin-flesh-learn.html">kotlin-flesh-learn.md</a></li>
+                        </ul>
+                    </div>
+                     <div class="menu-item">
+                        <div class="menu-title">./Java</div>
+                        <ul>
+                                <li><a href="https://fushaolei.github.io/imguploadtest/section3.html">section3.md</a></li>
+                                <li><a href="https://fushaolei.github.io/imguploadtest/section4.html">section4.md</a></li>
+                        </ul>
+                    </div>
+                     <div class="menu-item">
+                        <div class="menu-title">./读书笔记</div>
+                        <ul>
+                                <li><a href="https://fushaolei.github.io/imguploadtest/《Android开发艺术探索》.html">《Android开发艺术探索》.md</a></li>
+                                <li><a href="https://fushaolei.github.io/imguploadtest/《Java核心技术卷Ⅰ》笔记.html">《Java核心技术卷Ⅰ》笔记.md</a></li>
+                                <li><a href="https://fushaolei.github.io/imguploadtest/《图解HTTP》笔记.html">《图解HTTP》笔记.md</a></li>
+                                <li><a href="https://fushaolei.github.io/imguploadtest/《数据结构》笔记.html">《数据结构》笔记.md</a></li>
+                                <li><a href="https://fushaolei.github.io/imguploadtest/《第一行代码》笔记.html">《第一行代码》笔记.md</a></li>
+                                <li><a href="https://fushaolei.github.io/imguploadtest/《计算机网络》笔记.html">《计算机网络》笔记.md</a></li>
+                                <li><a href="https://fushaolei.github.io/imguploadtest/《软技能》笔记.html">《软技能》笔记.md</a></li>
+                        </ul>
+                    </div>
+        </aside>
+
+        <article class="rightArea">
+            <h1>《数据结构》笔记</h1>
+<p>这篇笔记参考了程杰老师的《大话数据结构》和严蔚敏老师的《数据结构》</p>
+<p>代码请看：<a href="https://gitee.com/FuShaoLei/DataStructure">https://gitee.com/FuShaoLei/DataStructure</a></p>
+<h2>第 01 章 基本概念</h2>
+<p><strong>数据结构是一门研究非数值计算的程序设计问题中计算机的操作对象以及它们之间的关系和操作的一门学科</strong></p>
+<p>四类基本数据结构：<strong>集合，线性，树，图</strong></p>
+<p>数据类型：<strong>一组性质相同的值的集合以及这个集合上的操作的一组总称</strong></p>
+<p><strong>抽象数据类型：指一个数学模型以及定义在该模型上的一组操作</strong></p>
+<p>算法：对特定问题求解步骤的一种描述，指令的有限序列</p>
+<p>算法的五个<strong>特性</strong>：<strong>有穷性，确定性，可行性</strong>，0个或多个输入，1个或多个输出</p>
+<p>算法的设计要求：<strong>正确性，可读性，健壮性，高效率，低存储</strong></p>
+<p>时间复杂度的计算：只考虑<strong>基本操作（可以这么理解：最深那一层括号中的语句都属于基本操作）</strong>，即基本操作的重复次数是问题规模n的某个函数f(n)，记作：T(n) = O(f(n))</p>
+<p>频度：<strong>基本操作的执行次数</strong></p>
+<p>加工型操作：会修改元素</p>
+<p>引用型操作：只用不改</p>
+<h2>第 02 章 线性表</h2>
+<p>线性表：<strong>n个数据元素的有限序列</strong></p>
+<p>4个唯一：</p>
+<ul>
+<li>存在唯一一个被称作“第一个”的数据元素</li>
+<li>存在唯一一个被称作“最后一个”的数据元素</li>
+<li>除第一个之外的数据元素均只有一个前驱</li>
+<li>除最后一个之外的数据元素均只有一个后继</li>
+</ul>
+<p>存储方式</p>
+<ul>
+<li><strong>顺序：用一组地址连续的存储单元依次存储</strong>
+<ul>
+<li>优点：随机存取</li>
+<li>缺点：插入或删除元素不方便</li>
+</ul>
+</li>
+<li><strong>链式：用一组物理位置任意的存储单元来存储</strong>
+<ul>
+<li>优点：插入或删除元素很方便</li>
+<li>缺点：非随机存取</li>
+</ul>
+</li>
+</ul>
+<p>循环链表的</p>
+<h2>第 03 章 栈与队列</h2>
+<p>栈：<strong>限定在表尾进行插入或删除操作的线性表，后进后出</strong></p>
+<p><strong>这里的表尾即是栈顶，表头是栈底</strong></p>
+<p>队列：<strong>限定在表的一端插入，另一端删除的线性表，先进先出</strong></p>
+<p><strong>插入的一端称为队尾，删除的一端称为队头</strong></p>
+<p>本章涉及到的一些存储结构：</p>
+<pre><code class="language-c">// 顺序栈的存储结构
+typedef struct {
+    SElemType *base; // 栈底指针
+    SElemType *top; // 栈顶指针，灵魂所在
+    int stackSize; // 分配的空间
+} SqStack;
+
+// 链栈的存储结构
+typedef struct StackNode {
+    SElemType data;
+    struct StackNode *next;
+} StackNode, *LinkStackPtr;
+
+typedef struct LinkStack {
+    LinkStackPtr top;
+    int count;
+} LinkStack;
+
+// 循环队列
+typedef struct {
+    QElemType *base;
+    int front;
+    int rear;
+} SqQueue;
+
+// 链队列的存储结构
+typedef struct QNode {
+    QElemType data;
+    struct QNode *next;
+} QNode, *QueuePtr;
+
+typedef struct {
+    QueuePtr front; // 队头
+    QueuePtr rear; // 队尾
+} LinkQueue;
+</code></pre>
+<h2>第 04 章 串</h2>
+<p><strong>串：0个或多个字符组成的有限序列</strong></p>
+<p><strong>串相等：两个串长度相等且各个对应位置的字符都相等</strong></p>
+<p>子串：由串中<strong>任意个连续的</strong>字符组成的子序列</p>
+<p>kmp算法：next数组要解决的时当模式串失配的时候，该指向的位置</p>
+<p>next数组的求法</p>
+<p>nextval数组的求法，看对应的next数组的值，如果不一样，则用next数组的值，如果一样，则用对应的nextval的值</p>
+<h2>第 05 章 数组和广义表</h2>
+<p>数组：具有<strong>相同类型</strong>的数据元素的集合</p>
+<p>两种顺序存储方式：</p>
+<ul>
+<li>以行序为主序（按一行一行的顺序存）</li>
+<li>以列序为主序（按一列一列的顺序存）</li>
+</ul>
+<p>稀疏矩阵：在m x n的矩阵中有t个非零元素，令 L = t/(m x n)，当L &lt;=0.05时称为稀疏矩阵</p>
+<ul>
+<li>三元组顺序表</li>
+<li>十字链表</li>
+</ul>
+<p>广义表：<strong>n个元素的有限序列，每一个元素可能是原子，也可能是一个子表</strong></p>
+<ul>
+<li>表头：<strong>第一个元素就是表头，可以是原子，也可以是子表</strong></li>
+<li>表尾：<strong>除表头之外的其他元素组成的表</strong></li>
+<li>长度：<strong>最外层所包含元素的个数</strong></li>
+<li>深度：<strong>该广义表展开后括号的重数</strong>，深度可以理解为有多少组括号。
+<ul>
+<li>原子深度为0，空表深度为1</li>
+<li>递归表的深度是无穷值，长度是有限值</li>
+</ul>
+</li>
+</ul>
+<p>本章涉及到的一些存储结构：</p>
+<pre><code class="language-c">// 稀疏矩阵的三元组顺序存储结构
+typedef struct {
+    int i, j; // 该非零元素的下标
+    Element e;
+} Triple;
+typedef struct {
+    Triple data[MAX_SIZE + 1]; // 下标为0的空间不用
+    int mu, nu, tu; // 行数，列数，非零元素个数
+} TSMatrix;
+
+// 稀疏矩阵的十字链表存储
+typedef struct OLNode {
+    int row, col; // 非零元素的行和列
+    ElemType value;
+    struct OLNode *right, *down; 
+} OLNode, *OLink;
+
+typedef struct {
+    OLink *rhead, *chead;
+    int mu, nu, tu; // 稀疏矩阵的行数，列数，非零元个数
+}CrossList;
+
+// 广义表的首尾链表表示法
+typedef enum {
+    ATOM, LIST
+} ELemtag;
+typedef struct GLNode {
+    Elemtag tag; // 标志域，用于区分元素结点和表结点 
+    union { // 元素结点和表结点的联合部分 
+      Atomtype atom; // atom 是原子结点的值域 
+      struct {
+          struct GLNode *hp, *tp; // hp和tp分别指向表头和表尾 
+      }ptr; // ptr是表结点的指针域
+    };
+  }*GList;                           
+
+// 广义表的孩子兄弟链表表示法
+typedef enum {
+    ATOM, LIST
+} ELemtag;
+typedef struct GLNode {
+    ELemtag tag; // 标志域
+    union {
+        AtomType atom; // 原子结点的值域
+        struct GLNode *hp; // 表结点的指针
+    };
+    struct GLNode *tp;// 指向兄弟结点
+} *GList;
+</code></pre>
+<h2>第 06 章 树和二叉树</h2>
+<ul>
+<li>树：n个结点的有限集，n=0 称为空树，若n&gt;0，则有且仅有一个“根”，其余为根的子树</li>
+<li>度：结点拥有的子树数量（树的度是树内各结点的度的最大值）</li>
+<li>二叉树：由一个根结点及左子树和右子树组成（<strong>与树的区别就是二叉树严格区分左右</strong>，这是二叉树与树的主要区别）
+<ul>
+<li>二叉树中不存在度大于2的结点</li>
+<li><strong>子树有左右之分</strong></li>
+</ul>
+</li>
+<li><strong>满二叉树，一颗深度为k的且有2^k -1个结点的二叉树</strong></li>
+<li>完全二叉树，这颗深度为k的二叉树与同样深度为k的满二叉树中编号为1~n的结点一一对应上时，称为完全二叉树（完全二叉树是路径长度最短的二叉树）</li>
+<li><strong>关于二叉树的性质</strong>：
+<ul>
+<li>性质1：<strong>在二叉树的第i层上至多有 2^(i-1)个结点</strong></li>
+<li>性质2：<strong>深度为k的二叉树至多有2^k -1个结点</strong></li>
+<li>性质3：<strong>对任何一棵二叉树T，如果其叶子数为n，度为2的结点数为m，则 n = m + 1</strong></li>
+<li>性质4：<strong>具有n个结点的完全二叉树的深度为log2n + 1</strong></li>
+<li>性质6：<strong>在n个结点的二叉链表中有n+1个空指针域</strong></li>
+</ul>
+</li>
+</ul>
+<p>遍历二叉树：巡访二叉树中的结点，使得每一个结点均被访问且仅被访问过一次</p>
+<ul>
+<li><strong>先序：根，左，右</strong></li>
+<li><strong>中序：左，根，右</strong></li>
+<li><strong>后序：左，右，根</strong></li>
+</ul>
+<p><strong>线索二叉树：根据遍历二叉树的方法，使用结点的空闲位置，指出前驱结点或后缀结点，实质是在遍历的过程中用线索取代空指针</strong></p>
+<blockquote>
+<p>中序前驱左孩找右，中序后继右孩找左</p>
+</blockquote>
+<p>树的遍历：</p>
+<ul>
+<li>先根遍历：根，其他</li>
+<li>后根遍历：其他，根</li>
+<li>按层次遍历：自上而下自左而右访问树中每个结点</li>
+</ul>
+<p>森林的遍历</p>
+<ul>
+<li>先序遍历：依次从左至右对森林中的每一棵树进行先根遍历</li>
+<li>中序遍历：依次从左至右对森林中的每一棵树进行后根遍历</li>
+</ul>
+<p>哈夫曼树：<strong>带权路径长度最短的二叉树</strong></p>
+<ul>
+<li><strong>包含n个叶子结点的哈夫曼树中共有2n-1个结点</strong></li>
+<li><strong>哈夫曼树中的结点的度或为0或为2</strong></li>
+</ul>
+<p>本章涉及到的一些存储结构：</p>
+<pre><code class="language-c">// 二叉树的存储结构
+typedef struct BiTNode {
+    TElemType data;
+    struct BiTNode *lchild, *rchild; // 左右孩子
+} BiTNode, *BiTree;
+
+// 树的双亲表示法
+typedef struct PTNode {
+    TElemType data;
+    int parent; // 双亲位置
+}PTNode;
+typedef struct {
+    PTNode nodes[MAX_TREE_SIZE];
+    int r,n; // n是结点数，r是根结点的下标
+}PTree;
+
+// 带双亲的孩子链表表示法
+typedef struct CTNode { // 链表结点
+    int child; // 孩子的下标
+    struct CTNode *next;
+} *ChildPtr;
+
+typedef struct { // 结点
+    int parent; // 双亲的下标
+    TElemType data;
+    ChildPtr firstChild; // 指向第一个孩子的指针
+} CTBox;
+
+typedef struct { // 树结构
+    CTBox nodes[MAX_TREE_SIZE];
+    int n, r; // n是结点数，r是根结点的下标
+} CTree;
+
+// 孩子兄弟表示法
+typedef struct CSNode {
+    ElemType data;
+    struct CSNode *firstChild,*nextsibling; // 第一个孩子，兄弟结点
+}CSNode,*CSTree;
+</code></pre>
+<h2>第 07 章 图</h2>
+<p>图是由顶点的<strong>有穷非空</strong>集合和顶点之间边的集合组成的</p>
+<p>边：无向图中的连线</p>
+<p>弧：有向图中的连线</p>
+<p><strong>无向完全图：任意两顶点都存在边的无向图，含有n个顶点的无向完全图有n(n-1)/2条边</strong></p>
+<p><strong>有向完全图：任意两顶点都存在方向互为相反的两条弧，有n个顶点的有向完全图有n(n-1)条边</strong></p>
+<p>权：与边或弧相关的数</p>
+<p>网：带权的图</p>
+<p>子图：顶点和边各自的子集</p>
+<p>在无向图或者有向图中，边的数目总和 = 度的总和/2</p>
+<p><strong>连通：如果说从顶点a到顶点b有路径，则称a和b是连通的</strong></p>
+<p><strong>连通图：图中任意两个顶点都是连通的</strong></p>
+<p><strong>连通图至少有n-1条边，当边的数目小于n-1，则此图一定是非连通图</strong></p>
+<p><strong>强连通图：任意两个顶点都连通的有向图</strong></p>
+<p><strong>生成树：所有顶点均由边连接在一起但不存在回路的图</strong></p>
+<ul>
+<li>顶点个数与图的顶点个数相同</li>
+<li>生成树的图的极小连通子图</li>
+<li><strong>一个有n个顶点的连通图的生成树有n-1条边</strong></li>
+</ul>
+<p><strong>图的各种存储结构</strong>：</p>
+<ul>
+<li><strong>邻接矩阵</strong>：使用两个数组，一个一维数组存储顶点形象，另外一个二维数组存储边或弧的关系
+<ul>
+<li>有向图中行的1的个数是顶点的出度，列的1的个数是顶点的入度</li>
+<li>无向图中顶点的度是行或列中的1的个数</li>
+</ul>
+</li>
+<li><strong>邻接表</strong>，类似树的孩子链表表示法，有向图的又分为邻接表（找出度易）和逆链接表（找入度易）</li>
+<li><strong>十字链表，仅适用于有向图</strong></li>
+</ul>
+<blockquote>
+<p>不知道什么时候记录的：</p>
+<p>在无向图中，表结点的个数是边的个数的2倍</p>
+<p>有向图中，表结点的个数是边的个数</p>
+</blockquote>
+<p><strong>图的遍历</strong>：</p>
+<ul>
+<li><strong>深度优先遍历</strong>：当前访问的顶点有未被访问的邻接顶点，则选其一访问，重复不断，反之则退回到上一个顶点（连通图的深度优先遍历类似于树的先根遍历）</li>
+<li><strong>广度优先遍历</strong>：从某一顶点出发，访问其所有的邻接顶点，然后按次序再访问其所有的邻接顶点（一层一层的扫描，类似树的层序遍历）</li>
+</ul>
+<p><strong>最小生成树：在一个无向网中，使得各边权数之和最小的那棵生成树</strong>，注意，最小生成树可能不唯一</p>
+<p>构造最小生成树的两个算法：</p>
+<ul>
+<li>普里姆算法：从某个顶点开始，逐个找个各顶点最小权值的边</li>
+<li>克鲁斯卡尔算法：令初始时只有n个顶点而无边的图，然后依次加入最小的连通分量，但是不能形成环</li>
+</ul>
+<p>最短路径问题：</p>
+<ul>
+<li><strong>从某个源点到其余顶点的最短路径问题</strong>：迪杰斯特拉算法：在求出的最短路径的基础上求出其他结点的最短路径</li>
+<li><strong>每对顶点间的最短路径问题</strong>，佛洛伊德算法：逐步试着在原直接路径中增加中间顶点，若加入后路径变短，则修改之</li>
+</ul>
+<p>最短路径与最小生成树的不同：路径上不一定包含n个顶点，也不一定包含n-1条边</p>
+<p><strong>有向无环图：有向图中不存在环，简称DAG图</strong></p>
+<p><strong>AOV网：用DAG图表示一个工程，顶点表示活动</strong></p>
+<p><strong>拓扑排序：做事的先后顺序</strong>（一个AOV网的拓扑序列不是唯一的）</p>
+<ol>
+<li>在有向图中选一个<strong>没有前驱（即入度为0）的顶点并输出之</strong></li>
+<li>从图中删除该顶点和所有以它为尾的弧</li>
+<li>重复上面两步，直到全部顶点均已输出，或者当图中不存在无前驱的顶点为止</li>
+</ol>
+<p><strong>AOE网：顶点表示事件，弧表示活动，弧的权表示活动持续时间</strong></p>
+<ul>
+<li>关键路径：路径长度最长的路径</li>
+<li>关键活动：最迟开始时间和最早开始时间相等的活动</li>
+<li>关键事件：最迟开始时间和最早开始时间相等的事件</li>
+</ul>
+<h2>第 09 章 查找</h2>
+<p>静态查找：只查找</p>
+<ul>
+<li>顺序查找</li>
+<li>折半查找-<strong>针对有序表</strong></li>
+<li>索引查找-<strong>分块有序（但是块内是无序的）</strong></li>
+</ul>
+<p>动态查找：查找后插入或者删除</p>
+<ul>
+<li>二叉排序树：<strong>左子树的值比根小，右子树的值比根大</strong>，中序遍历二叉排序树可得到一个关键字的有序序列</li>
+<li>二叉排序树的删除：
+<ul>
+<li>被删除结点为叶子结点，那就直接删除就行</li>
+<li>若被删除结点只有左子树，则用左孩子替代，若只有右子树，则用右孩子替代</li>
+<li>左右子树都非空，用被删除结点的中序直接前驱替代，或者用中序直接后继替代，或者用左子树直接替代</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>散列表，HashTable，又称为哈希表，特点：数据元素的关键字与其存储地址直接相关，关键字通过哈希函数（散列函数）确定存储地址</p>
+<ul>
+<li>同义词：不同关键字通过散列函数映射到同一个值</li>
+<li>冲突：通过散列函数确定的位置存放了其他元素</li>
+</ul>
+<p>解决冲突：链地址法</p>
+<h2>第 10 章 排序</h2>
+<p>内部排序：待排序的所有记录全部放置在内存中</p>
+<p>外部排序：待排序的记录个数太多，需要使用到外存</p>
+<p>交换排序：</p>
+<ul>
+<li>起泡排序</li>
+<li>快速排序</li>
+</ul>
+<p>选择排序：</p>
+<ul>
+<li>简单选择排序</li>
+<li>堆排序</li>
+</ul>
+<p>归并排序</p>
+<p>基数排序</p>
+
+        </article>
+    </main>
+</body>

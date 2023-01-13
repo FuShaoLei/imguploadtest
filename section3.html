@@ -12,6 +12,16 @@
             display: block;
         }
 
+        body {
+            font-size: 1.4rem;
+            background-color: #2E3033;
+            color: #DEDEDE;
+        }
+
+        body a{
+            color: #DEDEDE;
+        }
+
         .leftArea {
             bottom: 0px;
             left: 0px;
@@ -22,12 +32,12 @@
             right: auto;
             text-align: left;
             top: 0em;
-            width: 230px;
+            width: 300px;
         }
 
         .rightArea {
             bottom: 0px;
-            left: 230px;
+            left: 300px;
             overflow: auto;
             padding-left: 0.5em;
             padding-right: 0.5em;
@@ -35,6 +45,7 @@
             right: 0px;
             text-align: left;
             top: 0em;
+            max-
         }
     </style>
     <title>section3.md</title>
@@ -56,6 +67,18 @@
                         <ul>
                                 <li><a href="https://fushaolei.github.io/imguploadtest/section3.html">section3.md</a></li>
                                 <li><a href="https://fushaolei.github.io/imguploadtest/section4.html">section4.md</a></li>
+                        </ul>
+                    </div>
+                     <div class="menu-item">
+                        <div class="menu-title">./读书笔记</div>
+                        <ul>
+                                <li><a href="https://fushaolei.github.io/imguploadtest/《Android开发艺术探索》.html">《Android开发艺术探索》.md</a></li>
+                                <li><a href="https://fushaolei.github.io/imguploadtest/《Java核心技术卷Ⅰ》笔记.html">《Java核心技术卷Ⅰ》笔记.md</a></li>
+                                <li><a href="https://fushaolei.github.io/imguploadtest/《图解HTTP》笔记.html">《图解HTTP》笔记.md</a></li>
+                                <li><a href="https://fushaolei.github.io/imguploadtest/《数据结构》笔记.html">《数据结构》笔记.md</a></li>
+                                <li><a href="https://fushaolei.github.io/imguploadtest/《第一行代码》笔记.html">《第一行代码》笔记.md</a></li>
+                                <li><a href="https://fushaolei.github.io/imguploadtest/《计算机网络》笔记.html">《计算机网络》笔记.md</a></li>
+                                <li><a href="https://fushaolei.github.io/imguploadtest/《软技能》笔记.html">《软技能》笔记.md</a></li>
                         </ul>
                     </div>
         </aside>
@@ -89,16 +112,66 @@
  */
 </code></pre>
 <h3>3.数据类型</h3>
-<p>基本类型 | 位数 | 字节 | 默认值
---|--|--|--
-<code>int</code> | 32 |4 | 0
-<code>short</code>|16|2|0
-<code>long</code>|64 |8 |0L
-<code>byte</code>| 8 |1 |0
-<code>char</code>|16|2|'u0000'
-<code>float</code> | 32 |4 |0f
-<code>double</code>|64 |8 |0d
-<code>boolean</code>|1 | |false</p>
+<table>
+<thead>
+<tr>
+<th>基本类型</th>
+<th>位数</th>
+<th>字节</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>int</code></td>
+<td>32</td>
+<td>4</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>short</code></td>
+<td>16</td>
+<td>2</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>long</code></td>
+<td>64</td>
+<td>8</td>
+<td>0L</td>
+</tr>
+<tr>
+<td><code>byte</code></td>
+<td>8</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>char</code></td>
+<td>16</td>
+<td>2</td>
+<td>'u0000'</td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td>32</td>
+<td>4</td>
+<td>0f</td>
+</tr>
+<tr>
+<td><code>double</code></td>
+<td>64</td>
+<td>8</td>
+<td>0d</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td>1</td>
+<td></td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
 <h3>4.变量与常量</h3>
 <h4>变量</h4>
 <h5>声明变量</h5>
@@ -128,13 +201,36 @@ String name = &quot;任我行&quot;;
 <p>那么<code>Size</code>类型的变量只能取里边的值</p>
 <h3>5.运算符</h3>
 <h4>算术运算符</h4>
-<p>| 算术运算符 | 表示 |
-| ---------- | ---- |
-| <code>+</code>        | 加   |
-| <code>-</code>        | 减   |
-| <code>*</code>        | 乘   |
-| <code>/</code>        | 除   |
-| <code>%</code>        | 取模 |</p>
+<table>
+<thead>
+<tr>
+<th>算术运算符</th>
+<th>表示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>+</code></td>
+<td>加</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>减</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>乘</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>除</td>
+</tr>
+<tr>
+<td><code>%</code></td>
+<td>取模</td>
+</tr>
+</tbody>
+</table>
 <h4>类型转换</h4>
 <ul>
 <li>如参与运算的两个数类型不一致，则结果为较大类型的整型</li>

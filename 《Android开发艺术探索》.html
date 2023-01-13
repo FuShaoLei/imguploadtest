@@ -48,7 +48,7 @@
             max-
         }
     </style>
-    <title>index.md</title>
+    <title>《Android开发艺术探索》.md</title>
 </head>
 
 <body>
@@ -84,7 +84,31 @@
         </aside>
 
         <article class="rightArea">
-            <p>hello啊，这里是主页</p>
+            <h2>第 3 章 View事件体系</h2>
+<p>View的事件分发机制</p>
+<p>分析的对象就是MotionEvent</p>
+<pre><code class="language-kotlin">// 系统所能识别的被认为是滑动的最小距离
+var scaleTouchSlop = ViewConfiguration.get(context).scaledTouchSlop
+
+// 速度追踪
+var velocityTracker = VelocityTracker.obtain()
+velocityTracker.addMovement(event)
+
+velocityTracker.computeCurrentVelocity(1000)
+var xVelocity = velocityTracker.xVelocity
+var yVelocity = velocityTracker.yVelocity
+
+velocityTracker.clear()
+velocityTracker.recycle()
+</code></pre>
+<p>点击事件的传递规则</p>
+<pre><code class="language-java">// 用来进行事件的分发
+public boolean dispatchTouchEvent(MotionEvent ev);
+// 用来判断是否拦截某个事件
+public boolean onInterceptTouchEvent(MotionEvent ev);
+// 用来处理点击事件
+public boolean onTouchEvent(MotionEvent event);
+</code></pre>
 
         </article>
     </main>
